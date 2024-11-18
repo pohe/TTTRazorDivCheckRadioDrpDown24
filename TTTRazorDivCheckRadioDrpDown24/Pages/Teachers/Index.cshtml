@@ -1,0 +1,72 @@
+﻿@page
+@model TTTRazorDivCheckRadioDrpDown24.Pages.Teachers.IndexModel
+@{
+    ViewData["Title"] = "Teachers Overview";
+}
+<div class="text-center">
+    <h1 class="jumbotron" style="background-color: cadetblue; color: brown">Teachers</h1>
+    <table class="table">
+        <thead class="table-primary">
+        <th>Id</th>
+        <th>Navn</th>
+        <th>Køn</th>
+        <th>Sted</th>
+        <th>Fag</th>
+        </thead>
+        <tbody>
+            @foreach (var t in Model.Teachers)
+            {
+                <tr>
+                    <td>@t.Id</td>
+                    <td>@t.Name</td>
+                    @if (@t.IsMale)
+                    {
+                        <td>Mand</td>
+                    }
+                    else
+                    {
+                        <td>Kvinde</td>
+                    }
+                    <td>@t.WorkingLocation</td>
+                    <td>@t.GetCoursesText</td>
+                    @*<td><a asp-page="EditTeachser" asp-route-id="@t.Id">Edit</a></td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p></p>
+    <a asp-page="CreateTeacher">Laver en ny Underviser</a>
+</div>
+
+
+
+
+@*
+
+        <p></p>
+
+        @foreach (var teacher in @Model.Teachers)
+        {
+            <div class="card mb-4" style="width: 30rem;">
+                <div class="card-header">
+                    <h5 class="card-title">(@teacher.Id) @teacher.Name</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        @teacher.WorkingLocation
+                    <ul>
+                        @foreach (var course in @teacher.Courses)
+                        {
+                            <li>@course</li>
+                        }
+                    </ul>
+                    </p>
+                    </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        }
+
+
+    </div>
+*@
